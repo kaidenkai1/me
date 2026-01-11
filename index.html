@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday ⚡</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background:
+        linear-gradient(rgba(0,15,35,0.8), rgba(0,15,35,0.8)),
+        url("neon.png") no-repeat center center / cover;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+/* ELECTRIC LINES */
+.lightning {
+    position: absolute;
+    top: -100px;
+    width: 2px;
+    height: 120px;
+    background: linear-gradient(transparent, #4dfcff, transparent);
+    opacity: 0.8;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+    20% { opacity: 1; }
+    100% {
+        transform: translateY(120vh);
+        opacity: 0;
+    }
+}
+
+/* MAIN BOX */
+.container {
+    text-align: center;
+    max-width: 700px;
+    padding: 40px;
+    z-index: 2;
+    backdrop-filter: blur(4px);
+}
+
+/* TITLE */
+h1 {
+    font-size: 3.8rem;
+    margin-bottom: 25px;
+    background: linear-gradient(90deg, #4dfcff, #ffe600, #4dfcff);
+    background-size: 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: neonShift 3s infinite linear, pulse 1.5s infinite;
+}
+
+@keyframes neonShift {
+    0% { background-position: 0%; }
+    100% { background-position: 300%; }
+}
+
+@keyframes pulse {
+    0% { text-shadow: 0 0 10px #4dfcff; }
+    50% { text-shadow: 0 0 25px #ffe600; }
+    100% { text-shadow: 0 0 10px #4dfcff; }
+}
+
+/* MESSAGE */
+p {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+    background: linear-gradient(90deg, #ffffff, #4dfcff, #ffe600);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: neonShift 4s infinite linear;
+}
+
+/* BUTTON */
+button {
+    margin-top: 35px;
+    padding: 15px 35px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 40px;
+    background: #4dfcff;
+    color: #002233;
+    cursor: pointer;
+    box-shadow: 0 0 20px #4dfcff;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 40px #ffe600;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Happy Birthday ⚡</h1>
+
+    <p id="message">
+        To the fastest Neon main I know —  
+        may your life be as electric as your dashes,  
+        as bright as your energy,  
+        and always full of wins.  
+        <br><br>
+        Keep running forward,  
+        keep shining,  
+        and never lose that spark 💛💙
+    </p>
+
+    <button onclick="showMessage()">Click me ⚡</button>
+</div>
+
+<script>
+function showMessage() {
+    document.getElementById("message").style.opacity = "1";
+}
+
+// CREATE LIGHTNING
+for (let i = 0; i < 25; i++) {
+    const bolt = document.createElement("div");
+    bolt.className = "lightning";
+    bolt.style.left = Math.random() * 100 + "vw";
+    bolt.style.animationDuration = (1 + Math.random() * 2) + "s";
+    bolt.style.animationDelay = Math.random() * 5 + "s";
+    document.body.appendChild(bolt);
+}
+</script>
+
+</body>
+</html>
